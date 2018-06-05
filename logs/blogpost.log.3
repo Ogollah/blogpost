@@ -1,4 +1,4 @@
-2018-05-15 12:57:30,864 ERROR: Exception on /reset_password_request [POST] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-15 14:28:31,248 ERROR: Exception on /index [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,26 +12,60 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/stive/blogpost/app/routes.py", line 105, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/stive/blogpost/app/email.py", line 22, in send_password_reset_email
-    user=user, token=token),
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 57, in get_source
-    return self._get_source_fast(environment, template)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 85, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: email/reset_password.txt
-2018-05-15 12:58:08,420 ERROR: Exception on /reset_password_request [POST] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/stive/blogpost/app/routes.py", line 41, in index
+    prev_url=prev_url)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/stive/blogpost/app/templates/index.html", line 3, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
+  File "/home/stive/blogpost/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/stive/blogpost/app/templates/base.html", line 47, in block "content"
+    {% endfor %} {% endif %} {% endwith %} {# application content needs to be provided in the app_content block #} {% block app_content
+  File "/home/stive/blogpost/app/templates/index.html", line 5, in block "app_content"
+    {% if form %} {{ wtf.quick_form(form) }}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
+    {{ form_field(field,
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 119, in template
+    {{field.label(class="control-label")|safe}}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 399, in __call__
+    return widgets.HTMLString('<label %s>%s</label>' % (attributes, text or self.text))
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/speaklater.py", line 23, in __str__
+    return text_type(self._func(*self._args, **self._kwargs))
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 552, in gettext
+    t = get_translations()
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 227, in get_translations
+    [get_locale()],
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 257, in get_locale
+    rv = babel.locale_selector_func()
+  File "/home/stive/blogpost/app/__init__.py", line 58, in get_locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+NameError: name 'request' is not defined
+2018-05-15 14:29:16,930 ERROR: Exception on /edit_profile [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -45,27 +79,56 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/stive/blogpost/app/routes.py", line 105, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/stive/blogpost/app/email.py", line 22, in send_password_reset_email
-    user=user, token=token),
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 57, in get_source
-    return self._get_source_fast(environment, template)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 85, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: email/reset_password.txt
-2018-05-15 13:01:56,843 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:48]
-2018-05-15 13:28:04,643 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:50]
-2018-05-15 13:47:06,438 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:50]
-2018-05-15 14:26:46,744 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-05-15 14:27:56,007 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/stive/blogpost/app/routes.py", line 159, in edit_profile
+    form=form)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    context, ctx.app)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
+    rv = template.render(context)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/stive/blogpost/app/templates/edit_profile.html", line 3, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/stive/blogpost/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/stive/blogpost/app/templates/base.html", line 47, in block "content"
+    {% endfor %} {% endif %} {% endwith %} {# application content needs to be provided in the app_content block #} {% block app_content
+  File "/home/stive/blogpost/app/templates/edit_profile.html", line 8, in block "app_content"
+    {{ wtf.quick_form(form) }}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
+    {{ form_field(field,
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
+    rv = self._func(*arguments)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 119, in template
+    {{field.label(class="control-label")|safe}}
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 399, in __call__
+    return widgets.HTMLString('<label %s>%s</label>' % (attributes, text or self.text))
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/speaklater.py", line 23, in __str__
+    return text_type(self._func(*self._args, **self._kwargs))
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 552, in gettext
+    t = get_translations()
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 227, in get_translations
+    [get_locale()],
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 257, in get_locale
+    rv = babel.locale_selector_func()
+  File "/home/stive/blogpost/app/__init__.py", line 58, in get_locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+NameError: name 'request' is not defined

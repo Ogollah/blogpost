@@ -1,4 +1,4 @@
-2018-05-15 14:28:31,248 ERROR: Exception on /index [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-15 14:29:23,603 ERROR: Exception on /index [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -65,7 +65,7 @@ Traceback (most recent call last):
   File "/home/stive/blogpost/app/__init__.py", line 58, in get_locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 NameError: name 'request' is not defined
-2018-05-15 14:29:16,930 ERROR: Exception on /edit_profile [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
+2018-05-15 14:29:27,322 ERROR: Exception on /index [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -81,8 +81,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/stive/blogpost/app/routes.py", line 159, in edit_profile
-    form=form)
+  File "/home/stive/blogpost/app/routes.py", line 41, in index
+    prev_url=prev_url)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 116, in _render
@@ -95,8 +95,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/stive/blogpost/app/templates/edit_profile.html", line 3, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/stive/blogpost/app/templates/index.html", line 3, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
   File "/home/stive/blogpost/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
@@ -109,8 +109,8 @@ Traceback (most recent call last):
     {% block content -%}
   File "/home/stive/blogpost/app/templates/base.html", line 47, in block "content"
     {% endfor %} {% endif %} {% endwith %} {# application content needs to be provided in the app_content block #} {% block app_content
-  File "/home/stive/blogpost/app/templates/edit_profile.html", line 8, in block "app_content"
-    {{ wtf.quick_form(form) }}
+  File "/home/stive/blogpost/app/templates/index.html", line 5, in block "app_content"
+    {% if form %} {{ wtf.quick_form(form) }}
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
     rv = self._func(*arguments)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
