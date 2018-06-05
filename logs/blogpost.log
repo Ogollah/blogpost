@@ -1,4 +1,4 @@
-2018-05-15 14:29:30,432 ERROR: Exception on /index [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
+2018-06-05 18:28:19,673 ERROR: Exception on / [GET] [in /home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py:1560]
 Traceback (most recent call last):
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/stive/blogpost/app/routes.py", line 41, in index
+  File "/home/stive/Desktop/blogpost/app/main/routes.py", line 44, in index
     prev_url=prev_url)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
     context, ctx.app)
@@ -28,9 +28,9 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/stive/blogpost/app/templates/index.html", line 3, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
-  File "/home/stive/blogpost/app/templates/base.html", line 1, in top-level template code
+  File "/home/stive/Desktop/blogpost/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/stive/Desktop/blogpost/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
     {% block doc -%}
@@ -38,37 +38,26 @@ Traceback (most recent call last):
     {%- block html %}
   File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
     {% block body -%}
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/home/stive/blogpost/app/templates/base.html", line 47, in block "content"
-    {% endfor %} {% endif %} {% endwith %} {# application content needs to be provided in the app_content block #} {% block app_content
-  File "/home/stive/blogpost/app/templates/index.html", line 5, in block "app_content"
-    {% if form %} {{ wtf.quick_form(form) }}
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
-    rv = self._func(*arguments)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 205, in template
-    {{ form_field(field,
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/jinja2/runtime.py", line 579, in _invoke
-    rv = self._func(*arguments)
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 119, in template
-    {{field.label(class="control-label")|safe}}
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 399, in __call__
-    return widgets.HTMLString('<label %s>%s</label>' % (attributes, text or self.text))
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/speaklater.py", line 23, in __str__
-    return text_type(self._func(*self._args, **self._kwargs))
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 552, in gettext
-    t = get_translations()
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 227, in get_translations
-    [get_locale()],
-  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_babel/__init__.py", line 257, in get_locale
-    rv = babel.locale_selector_func()
-  File "/home/stive/blogpost/app/__init__.py", line 58, in get_locale
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-NameError: name 'request' is not defined
-2018-05-15 14:31:45,586 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-05-15 16:41:56,279 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-05-20 23:37:30,228 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-05-21 08:31:20,796 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-05-21 11:51:13,781 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-05-21 12:22:08,196 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
-2018-06-02 10:04:51,577 INFO: Blogpost startup [in /home/stive/blogpost/app/__init__.py:53]
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/home/stive/Desktop/blogpost/app/templates/base.html", line 13, in block "navbar"
+    <a class="navbar-brand" href="{{ url_for('blogpost.png') }}">Blogpost</a>
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/helpers.py", line 333, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/app.py", line 1805, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/flask/helpers.py", line 323, in url_for
+    force_external=external)
+  File "/home/stive/blogpost/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'blogpost.png'. Did you mean 'auth.logout' instead?
+2018-06-05 18:30:49,838 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 18:32:26,347 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 18:36:28,381 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 18:37:08,857 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 18:38:11,754 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 18:42:39,300 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 18:48:16,117 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
+2018-06-05 19:03:21,169 INFO: Blogpost startup [in /home/stive/Desktop/blogpost/app/__init__.py:72]
